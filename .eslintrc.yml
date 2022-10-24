@@ -1,0 +1,142 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+  jest: true
+extends:
+  - airbnb
+  - airbnb-typescript
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:import/typescript
+  - plugin:jsx-a11y/recommended
+  - plugin:react-hooks/recommended
+  - plugin:prettier/recommended
+  - plugin:react-native/all
+  - prettier
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: "@typescript-eslint/parser"
+parserOptions:
+  project: ./tsconfig.json
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - "@typescript-eslint"
+  - testing-library
+  - react
+  - react-native
+  - import
+  - prettier
+rules:
+  react-native/no-unused-styles: 1
+  react-native/split-platform-components: 1
+  react-native/no-inline-styles: 1
+  react-native/no-color-literals: 0
+  react-native/no-single-element-style-arrays: 1
+  react-native/sort-styles: 1
+  react-native/no-raw-text:
+    - 1
+    - skip:
+        - Text.Text
+        - Text.Text.Text
+        - Text.Text.Text.Text
+        - Text.Text.Text.Text.Text
+        - Text.Text.Text.Text.Text.Text
+        - Badge
+  react/function-component-definition: 0
+  prettier/prettier:
+    - 1
+    - {}
+    - usePrettierrc: true
+  arrow-body-style: 0
+  prefer-arrow-callback: 0
+  import/no-unresolved:
+    - 2
+    - ignore:
+      - '@env'
+  import/prefer-default-export: 0
+  import/no-extraneous-dependencies:
+    - 2
+    - devDependencies: true
+  global-require: 0
+  semi:
+    - error
+    - never
+  react/jsx-fragments:
+    - 1
+    - element
+  camelcase: 0
+  indent: 0
+  template-curly-spacing: 0
+  quotes:
+    - error
+    - single
+    - avoidEscape: true
+  jsx-quotes:
+    - error
+    - prefer-double
+  comma-dangle:
+    - 1
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: always-multiline
+      exports: always-multiline
+      functions: never
+  linebreak-style:
+    - error
+    - unix
+  react/no-unused-prop-types: 0
+  react/destructuring-assignment: 0
+  react/react-in-jsx-scope: 0
+  react/jsx-max-props-per-line: warn
+  react/jsx-props-no-spreading: 0
+  react/jsx-one-expression-per-line: 0
+  react/jsx-filename-extension: 0
+  react/state-in-constructor: 0
+  react/forbid-prop-types: 0
+  react/require-default-props: 0
+  react/prop-types: 0
+  no-underscore-dangle: 0
+  react/no-array-index-key: 0
+  no-param-reassign: 0
+  react/style-prop-object: 0
+  max-len: 0
+  no-redeclare: 0
+  "@typescript-eslint/no-redeclare":
+    - error
+    - ignoreDeclarationMerge: true
+  no-unused-vars: 0
+  "@typescript-eslint/naming-convention": 0
+  "@typescript-eslint/no-unused-vars": error
+  no-shadow: 0
+  "@typescript-eslint/no-shadow": error
+  testing-library/await-async-query: error
+  testing-library/no-await-sync-query: error
+  testing-library/no-debugging-utils: warn
+  testing-library/no-dom-import: off
+settings:
+  react:
+    version: detect
+  import/parsers:
+    '@typescript-eslint/parser':
+      - .ts
+      - .tsx
+      - .json
+  import/resolver:
+    node:
+      moduleDirectory:
+        - node_modules
+    typescript:
+      alwaysTryTypes: true
+overrides:
+  - files:
+      - "**/__tests__/**/*.[jt]s?(x)"
+      - "**/?(*.)+(spec|test).[jt]s?(x)"
+    extends:
+      - plugin:testing-library/react
